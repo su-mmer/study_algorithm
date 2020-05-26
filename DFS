@@ -1,0 +1,52 @@
+// 여러 개의 인접 노드가 있을 경우 숫자가 작은 노드 부터 방문하도록 함
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int nodeCount, m, x, y, start;
+int c[20];
+vector<int> a[20];  // 방문 노드가 가지는 인접 노드
+
+void dfs(int x) {
+    if (c[x]) return;  // 노드 방문했다면 함수 끝
+    c[x] = true;  // 처음 방문시 방문처리
+    cout << x << ' ';  // 노드 출력
+
+// 벡터를 정렬하는 방법 1
+//    for(int i = 0; i < a[x].size(); i++){
+//        sort(a[x].begin(), a[x].end());
+//    }
+
+    for(vector<int>::size_type i=0; i<a[x].size(); i++){
+        cout << x << '-' << a[x][i] << ' ';
+    }
+    cout << endl;
+
+    for (int i = 0; i < a[x].size(); i++) {  // 인접 노드 하나씩 방문
+        int y = a[x][i];  // 노드 하나씩 dfs 수행
+        dfs(y);
+    }
+}
+
+int main() {
+    cin >> nodeCount;
+    cin >> m;
+
+    for (int i = 0; i < m; i++) {
+        cin >> x >> y;
+        a[x].push_back(y);
+        a[y].push_back(x);
+    }
+
+    // 벡터 정렬 방법 2
+    for(int i = 1; i < nodeCount; i++){
+        sort(a[i].begin(), a[i].end());
+    }
+
+    cin >> start;
+    dfs(start);
+
+    return 0;
+}
