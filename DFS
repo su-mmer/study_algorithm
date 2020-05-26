@@ -41,7 +41,7 @@ int main() {
     }
 
     // 벡터 정렬 방법 2
-    for(int i = 1; i < nodeCount; i++){
+    for(int i = 1; i <= nodeCount; i++){
         sort(a[i].begin(), a[i].end());
     }
 
