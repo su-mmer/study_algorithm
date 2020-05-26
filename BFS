@@ -1,0 +1,51 @@
+#include <iostream>
+#include <queue>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int nodeCount, x, y, m, start;
+int c[20];  // 방문한 배열
+vector<int> a[20]; // 각 노드의 인덱스가 1부터 처리될 수 있도록 
+
+void bfs(int start) {
+	queue<int> q;
+	q.push(start);
+	c[start] = true;  // 방문처리
+	
+	while(!q.empty()){
+		int x = q.front();  // q에서 꺼낼 변수 저장
+		q.pop(); // q에서 하나 꺼냄 
+		cout << x << ' ';  // 꺼낸 q를 출력 
+    	
+    	for(int i = 0; i < a[x].size(); i++){
+        	sort(a[x].begin(), a[x].end());
+   		}
+    	
+		for(int i=0; i<a[x].size(); i++){
+			int y = a[x][i];  // q와 인접한 노드를 돌며 
+			
+			if(!c[y]) {  // 방문을 하지 않은 노드라면 
+				q.push(y);  // q에 넣어준다 
+				c[y] = true;  // 방문처리 
+			}
+		}
+	}
+}
+
+int main(){
+	cin >> nodeCount;
+    cin >> m;
+ 
+    for (int i = 0; i < m; i++) {
+        cin >> x >> y;
+        a[x].push_back(y);
+        a[y].push_back(x);
+    }
+    
+	cin >> start;
+	bfs(start);
+	
+	return 0;
+}
