@@ -1,0 +1,27 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int n, m, x, y;
+int number[100000];
+int sum[100000];
+
+int main() {
+    ios_base::sync_with_stdio(NULL);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    scanf("%d", &n);
+    for(int i=1; i<=n; i++){
+    	scanf("%d", &number[i]);
+    	sum[i] = sum[i-1] + number[i];
+	}
+	
+	scanf("%d", &m);
+	for(int i=0; i<m; i++) {
+		scanf("%d %d", &x, &y);
+		printf("%d\n", sum[y]-sum[x-1]);
+		//cout << sum[y]-sum[x-1] << "\n";
+	}
+    
+    return 0;
+}
