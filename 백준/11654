@@ -1,0 +1,16 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int n;
+
+
+int main() {
+    ios_base::sync_with_stdio(NULL);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    scanf("%c", &n);
+    printf("%d", n);
+    
+    return 0;
+}
