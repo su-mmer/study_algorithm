@@ -1,0 +1,28 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int arr[30];
+int sum;
+
+int main(){
+	for(int i=0; i<28; i++){
+		cin >> arr[i];
+	}
+	sort(arr, arr+28);
+	
+	int j=1;
+	for(int i=0; i<30; i++){
+		if(j != arr[i]) {
+			cout << j << endl;
+			j++;
+			sum++;
+		}
+		if(j != 30) j++;
+		else continue;
+		//if(j == 30) break;
+		if(sum==2) break;
+	}
+	
+	return 0;
+}
