@@ -1,0 +1,23 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int arr_K[10];
+int arr_W[10];
+
+int main(){
+	
+	for(int i=0; i<10; i++){
+		cin >> arr_W[i];
+	}
+	for(int i=0; i<10; i++){
+		cin >> arr_K[i];
+	}
+	
+	sort(arr_K, arr_K+10);
+	sort(arr_W, arr_W+10);
+	
+	cout << arr_W[9]+arr_W[8]+arr_W[7] << ' ' << arr_K[9]+arr_K[8]+arr_K[7];
+	
+	return 0;
+}
