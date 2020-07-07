@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+
+int defaultX, defaultY, limitY, plusY, water;
+int x, y;
+
+int main(){
+	cin >> defaultX >> defaultY >> limitY >> plusY >> water;
+	
+	x = defaultX * water;
+	if(water <= limitY){
+		y = defaultY;
+	}
+	else{
+		y = defaultY + (water-limitY)*plusY;
+	}
+	
+	if(x<y) cout << x;
+	else cout << y;
+	return 0;
+}
