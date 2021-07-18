@@ -1,0 +1,30 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main()
+{
+	//freopen("input.txt", "rt", stdin);
+	int n;
+	cin >> n;
+	vector <int> v(n);
+	vector <int> seq(n, 1);
+	
+	for(int i=0; i<n; i++)
+	{
+		cin >> v[i];
+	}
+	for(int i=0; i<n; i++)
+	{
+		for(int j=0; j<n; j++)
+		{
+			if(v[i] < v[j]) seq[i]++;
+		}	
+	}
+	
+	for(int i=0; i<n; i++)
+	{
+		printf("%d ", seq[i]);
+	}
+	return 0;
+}
