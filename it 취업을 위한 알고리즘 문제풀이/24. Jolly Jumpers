@@ -1,0 +1,36 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main()
+{
+	//freopen("input.txt", "rt", stdin);
+	int n, a, b, pos;
+	cin >> n;
+	vector <int> v(n);
+	
+	cin >> a;
+	for(int i=1; i<n; i++)
+	{
+		cin >> b;
+		pos = abs(a-b);
+		if(0<pos && pos<n && v[pos]==0) v[pos] = 1;
+		else 
+		{
+			printf("NO\n");
+			return 0;
+		}
+		
+		a = b;
+	}
+	
+	printf("YES");
+	
+	return 0;
+}
+
+// 배열 만들어서 차가 나오면 해당 인덱스를 1로 바꾸는 것은 생각했는데
+// 마지막에 배열을 검사해서 0이면 끝낼 생각만 했지
+// 처음부터 조건으로 0이 나올수 없게 만드는 걸 생각 못함
+// if(0<pos && pos<n && v[pos] == 0)
