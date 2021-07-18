@@ -4,30 +4,29 @@ using namespace std;
 
 int main()
 {
-	//freopen("input.txt", "rt", stdin);
+	freopen("input.txt", "rt", stdin);
 	int n, cnt=1, res=0, smaller;
 	
 	scanf("%d", &n);
 	vector <int> v(n);
 	
-	for(int i=0; i<n; i++)
+	scanf("%d", &smaller);
+	
+	for(int i=1; i<n; i++)
 	{
 		cin >> v[i];
  	}
  	
-	smaller = v[0];
 	for(int i=1; i<n; i++)
 	{
-		if(smaller <= v[i]) cnt++;
-
-		else
-		{
-			if(res < cnt) res = cnt;
-			cnt = 1;
+		if(smaller <= v[i]) {
+			cnt++;
+			if(res < cnt) res = cnt;	
 		}
-		smaller = v[i];
+
+		else cnt = 1;
+		smaller = v[i];  
 	}
-	if(res < cnt) res = cnt;
 	
 	printf("%d", res);
 	
