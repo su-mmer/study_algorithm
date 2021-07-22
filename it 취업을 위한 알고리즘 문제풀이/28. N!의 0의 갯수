@@ -1,0 +1,35 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main()
+{
+	//freopen("input.txt", "rt", stdin);
+	int n, j, tmp, cnt1=0, cnt2=0;
+	scanf("%d", &n);
+	//vector <int> v(n+1);
+	
+	for(int i=2; i<=n; i++)
+	{
+		tmp = i;
+		j = 2;
+		while(1)  // 소인수분해
+		{
+			if(tmp%j==0)  // tmp가 나누어 떨어지면 
+			{
+				if(j==2) cnt1++;  // 2, 5 확인 
+				else if(j==5) cnt2++;
+				tmp=tmp/j;
+			}
+			else j++;
+			if(tmp==1) break;
+		}
+	}
+	
+	if(cnt1<cnt2) printf("%d\n", cnt1);
+	else printf("%d\n", cnt2); 
+	
+	
+	return 0;
+}
