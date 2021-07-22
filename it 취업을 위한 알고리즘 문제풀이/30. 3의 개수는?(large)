@@ -1,0 +1,42 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main()
+{
+  // 일의 자리부터 자릿수별로 3의 갯수를 센다.
+  // k로 자릿수를 구별하고 cur이 해당 자릿수의 숫자이며 lt와 rt는 각각 왼쪽과 오른쪽의 수이다.
+  // cur이 3보다 클 때, 작을 때, 같을 때로 구별하여 갯수를 센다.
+  
+	//freopen("input.txt", "rt", stdin);
+	int n, lt=-1, cur, rt, k=1, res=0;
+	
+	scanf("%d", &n);
+	
+	while(lt!=0)
+	{
+		lt = n/(k*10);
+		cur = (n/k)%10;
+		rt = n%k;
+		
+		//printf("%d %d %d\n", lt, cur, rt);
+		if(cur>3)
+		{
+			res = res+(lt+1)*k;  // cur>3이면 lt만큼 3의 자릿수를 셀 수 있다.
+		}
+		else if(cur<3)
+		{
+			res = res+(lt*k);  // cur<3이면 lt-1만큼 3이 있다. (0부터 세니 lt*k)
+		}
+		else
+		{
+			res = res+(lt*k)+(rt+1);  // cur==3이면 k의 자릿수만큼 3이 있고 0부터 rt까지 만큼 3이 있다.
+		}
+		k*=10;
+	}
+	
+	printf("%d", res);
+	
+	return 0;
+}
