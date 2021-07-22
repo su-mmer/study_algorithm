@@ -1,0 +1,40 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+char ch[10];
+
+int main()
+{
+	//freopen("input.txt", "rt", stdin);
+	int c=0, h=0, h_pos;
+	scanf("%s", &ch);
+	
+	if(ch[1]=='H')  // C가 1개 
+	{
+		c=1;
+		h_pos=1;
+	}
+	else
+	{
+		for(int i=1; ch[i]!='H'; i++)  // H 전까지 숫자 구하기
+		{
+			c = c*10+(ch[i]-48);
+			h_pos = i+1;
+		}
+	}
+  
+	if(ch[h_pos+1]=='\0') h =1;  // H가 1개
+	else
+	{
+		for(int i=h_pos+1; ch[i]!='\0'; i++)
+		{
+			h=h*10+(ch[i]-48);
+		}
+	}
+	
+	printf("%d", c*12+h);
+	
+	return 0;
+}
