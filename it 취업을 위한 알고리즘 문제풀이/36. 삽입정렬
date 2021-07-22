@@ -1,0 +1,36 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main()
+{
+	//freopen("input.txt", "rt", stdin);
+	int n, idx, tmp, cnt=0;
+	scanf("%d", &n);
+	vector <int> v(n);
+	
+	for(int i=0; i<n; i++)
+	{
+		scanf("%d", &v[i]);
+	}
+	
+	for(int i=1; i<n; i++)
+	{
+		int j;
+		tmp = v[i];
+		for(j=i-1; j>=0; j--)
+		{
+			if(v[j]>tmp) v[j+1] = v[j];
+			else break;
+		}
+		v[j+1] = tmp;
+	}
+	
+	for(int i=0; i<n; i++)
+	{
+		printf("%d ", v[i]);
+	}	
+	
+	return 0;
+}
