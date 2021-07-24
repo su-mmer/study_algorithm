@@ -5,10 +5,9 @@ using namespace std;
 
 int main()
 {
-	freopen("input.txt", "rt", stdin);
+	//freopen("input.txt", "rt", stdin);
 	int n, b=1, m, a, tmp, cnt=0;
 	scanf("%d", &a);
-	vector <int> v(n);
 	
 	tmp = a;
 	a--;
