@@ -1,0 +1,32 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main()
+{
+	freopen("input.txt", "rt", stdin);
+	int n, b=1, m, a, tmp, cnt=0;
+	scanf("%d", &a);
+	vector <int> v(n);
+	
+	tmp = a;
+	a--;
+	while(a>0)
+	{
+		b++;
+		a=a-b;
+		if(a%b==0)
+		{
+			int i;
+			for(i=1; i<b; i++)
+			{
+				printf("%d + ", (a/b)+i);
+			}
+			printf("%d = %d\n", (a/b)+i, tmp);
+			cnt++;
+		}
+	}
+	printf("%d", cnt);
+	return 0;
+}
