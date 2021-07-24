@@ -1,0 +1,39 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+/*
+앞에서부터 미는걸로만 생각하다 안돼서 전략 봤는데 뒤에서부터 미시더라..
+뒤에서부터 미는게 더 효율적인것 같다.
+앞에서부터 밀면 1은 먼저 넣고 자기보다 작은 수는 건너뛰고 큰수 따로 세서 넣어야하니까
+*/
+
+int main()
+{
+	freopen("input.txt", "rt", stdin);
+	int n, s, idx, tmp, pos, cnt=0;
+	scanf("%d", &n);
+	vector <int> sequence(n+1);
+	vector <int> sorting(n+1);
+	
+	for(int i=1; i<=n; i++)
+	{
+		scanf("%d", &sequence[i]);
+	}
+
+	for(int i=n; i>0; i--)
+	{
+		pos = i;
+		for(int j=1; j<=sequence[i]; j++)
+		{
+			sorting[pos] = sorting[pos+1];
+			pos++;
+		}
+		sorting[pos] = i;
+	}
+	
+	for(int i=1; i<=n; i++) printf("%d ", sorting[i]);
+	
+	return 0;
+}
