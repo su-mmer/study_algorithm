@@ -1,0 +1,50 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+int a[1001], n;
+
+// 기준인 mid 시간 이내로 몇개의 DVD를 만들수 있는지 return하는 함수
+int Count(int s)
+{
+	int i, cnt=1, sum=0;
+	for(i=1; i<=n; i++)
+	{
+		if(sum+a[i]>s)  // 다음 시간을 더했을 때 기준인 mid보다 크다면
+		{
+			cnt++;  // DVD 갯수 카운트 +1
+			sum=a[i];  // 다음 DVD에 a[i] 넣기
+		}
+		else sum=sum+a[i];  // 기준인 mid보다 작다면 해당 DVD에 시간 넣기
+	}
+	return cnt;
+}
+
+int main()
+{
+	//freopen("input.txt", "rt", stdin);
+	int m, mid, res=0, lt=1, rt=0, max=-2147000000;
+	scanf("%d %d", &n, &m);
+	
+	for(int i=1; i<=n; i++)
+	{
+		scanf("%d", &a[i]);
+		rt=rt+a[i];  // 처음 rt 값은 모든 값을 더한 값
+		if(a[i]>max) max=a[i];  // 최대값을 시간중 가장 큰 수로 잡는다
+	}
+	
+	while(lt<=rt)
+	{
+		mid=(lt+rt)/2;  
+		if(mid>=max && Count(mid)<=m)  // 기준이 되는 mid는 max보다 큰 수여야하고, mid 이하의 시간으로 m개 DVD가 카운팅 가능한가
+		{
+			res=mid;  // 결과값에 mid
+			rt=mid-1;  // rt를 mid 기준 왼쪽으로 놓고 왼쪽 배열에서 다시 res를 찾아본다. 최소값을 찾기 위해
+		}
+		else lt=mid+1;  // DVD의 갯수가 m개보다 많다면 오른쪽 배열에서 다시 찾는다
+		
+	}
+	printf("%d", res);
+	
+	return 0;
+}
